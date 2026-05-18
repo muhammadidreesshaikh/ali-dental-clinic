@@ -48,3 +48,7 @@ export function bootstrapMockApi() {
 
   mock.onAny().reply(() => [200, { success: true }]);
 }
+
+// Auto-bootstrap mocks when this module is imported so the app
+// uses mock responses by default in development environments.
+bootstrapMockApi();
