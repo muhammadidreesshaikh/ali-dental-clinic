@@ -19,6 +19,7 @@ import { GlassCard } from '../components/GlassCard';
 import { PageHeader } from '../components/PageHeader';
 import { LoadingState } from '../components/LoadingState';
 import { AppDataGrid } from '../components/AppDataGrid';
+import { Padding } from '@mui/icons-material';
 
 const chartKeys = ['today', 'weekly', 'monthly'];
 
@@ -30,7 +31,7 @@ function ChartTooltip({ active, payload, label }) {
   if (!active || !payload?.length) return null;
 
   return (
-    <GlassCard sx={{ p: 0, minWidth: 180 }} contentSx={{ p: 2 }}>
+    <GlassCard sx={{ p: 0, minWidth: 180, borderRadius: 10 }} contentSx={{ p: 2 }}>
       <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
         {label}
       </Typography>
@@ -70,14 +71,14 @@ export function DashboardPage() {
       <Grid container spacing={3} sx={{ mb: 3 }}>
         {dashboardStats.map((stat) => (
           <Grid key={stat.label} item xs={12} sm={3} xl={3}>
-            <MetricCard {...stat} />
+            <MetricCard {...stat}  />
           </Grid>
         ))}
       </Grid>
 
       <Grid container spacing={3}>
         <Grid item xs={12} xl={7}>
-          <GlassCard>
+          <GlassCard >
             <Stack spacing={2.5}>
               <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2}>
                 <Box>
@@ -147,6 +148,7 @@ export function DashboardPage() {
             searchFields={[ 'invoice', 'customer', 'status' ]}
             height={400}
             compact
+            cardSx={{ padding: "20px",}}
           />
         </Grid>
         <Grid item xs={12} xl={6}>
@@ -163,6 +165,8 @@ export function DashboardPage() {
             searchFields={[ 'medicine', 'category', 'trend' ]}
             height={400}
             compact
+            cardSx={{padding: "20px" }}
+            // tableSx={{ borderRadius: 10 }}
           />
         </Grid>
       </Grid>

@@ -42,7 +42,7 @@ export const createAppTheme = (mode) =>
       },
     },
     shape: {
-      borderRadius: 20,
+      borderRadius: 3,
     },
     typography: {
       fontFamily: 'Roboto, Segoe UI, system-ui, -apple-system, BlinkMacSystemFont, sans-serif',

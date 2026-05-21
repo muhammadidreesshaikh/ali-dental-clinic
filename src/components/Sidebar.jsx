@@ -20,14 +20,14 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
             background: 'linear-gradient(135deg, rgba(16,185,129,0.18), rgba(6,182,212,0.18))',
           }}
         >
-          <Typography variant="subtitle2" sx={{ fontWeight: 800, letterSpacing: '0.12em' }}>
+          <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: '0.12em'}}>
             DANIYAL
           </Typography>
-          {!collapsed ? <Typography variant="caption" color="text.secondary">Pharmacy Management</Typography> : null}
+          {!collapsed ? <Typography color="text.secondary" sx={{fontSize: "14px"}}>Pharmacy Management</Typography> : null}
         </Box>
-        <Typography variant="caption" color="text.secondary" sx={{ px: 0.5 }}>
-          {collapsed ? 'Menu' : 'Navigation'}
-        </Typography>
+        {/* <Typography variant="caption" color="text.secondary" sx={{ px: 0.5 }}>
+          {collapsed ? 'Menu' : 'Navigation11'}
+        </Typography> */}
       </Stack>
       <Divider />
       <List sx={{ px: 1.5, py: 1, flex: 1 }}>

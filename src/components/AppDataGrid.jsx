@@ -27,7 +27,7 @@ const defaultColumns = (onEdit, onDelete) => [
   },
 ];
 
-export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDelete, onAdd, addLabel = 'Add', extraActions = [], filterField, filterOptions = [], height = 520, compact = false }) {
+export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDelete, onAdd, addLabel = 'Add', extraActions = [], filterField, filterOptions = [], height = 520, compact = false, cardSx, tableSx }) {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('All');
 
@@ -50,7 +50,7 @@ export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDele
   const exportableRows = filteredRows.map((row) => ({ ...row }));
 
   return (
-    <GlassCard contentSx={{ p: compact ? 0 : 3 }}>
+    <GlassCard sx={cardSx} contentSx={{ p: compact ? 0 : 3 }}>
       <Stack spacing={2.5}>
         <Stack direction={{ xs: 'column', lg: 'row' }} justifyContent="space-between" spacing={2}>
           <Box>
@@ -100,7 +100,23 @@ export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDele
             slots={{
               noRowsOverlay: () => <EmptyState title="No records found" description="Try another search or add a new record." actionLabel={onAdd ? addLabel : undefined} onAction={onAdd} />,
             }}
-            sx={{ border: 'none' }}
+            sx={{
+              border: 'none',
+              borderRadius: 3,
+              '& .MuiDataGrid-virtualScroller': {
+                borderBottom: 'none',
+              },
+              '& .MuiDataGrid-footerContainer': {
+                borderTop: 'none',
+              },
+              '& .MuiDataGrid-row': {
+                borderBottom: 'none',
+              },
+              '& .MuiDataGrid-columnHeaders': {
+                borderBottom: 'none',
+              },
+              ...tableSx,
+            }}
           />
         </Box>
       </Stack>

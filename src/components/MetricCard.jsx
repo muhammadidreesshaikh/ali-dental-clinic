@@ -2,13 +2,14 @@ import React from 'react';
 import { Box, Chip, Stack, Typography } from '@mui/material';
 import { GlassCard } from './GlassCard';
 
-export function MetricCard({ label, value, change, icon: Icon, gradient }) {
+export function MetricCard({ label, value, change, icon: Icon, gradient, cardSx }) {
   return (
     <GlassCard
       sx={{
         color: '#fff',
         backgroundImage: `${gradient}, linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,255,255,0.45))`,
         minHeight: 160,
+        ...cardSx,
       }}
       contentSx={{ color: 'inherit' }}
     >

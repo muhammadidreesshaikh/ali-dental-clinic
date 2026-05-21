@@ -74,7 +74,7 @@ export function Topbar({ onMenuClick, collapsed, onToggleCollapse }) {
             </Typography>
           </Box>
           <Box>
-            <Typography variant="h6" sx={{ fontWeight: 900, lineHeight: 1 }}>
+            <Typography variant="h6" color="text.primary" sx={{ fontWeight: 900, lineHeight: 1, marginBottom: "3px"}}>
               Daniyal Pharmacy
             </Typography>
             <Typography variant="body2" color="text.secondary">
