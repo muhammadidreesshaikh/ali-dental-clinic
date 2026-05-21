@@ -93,7 +93,7 @@ export function DashboardPage() {
                   ))}
                 </Tabs>
               </Stack>
-              <Box sx={{ width: '100%', height: 360 }}>
+              <Box sx={{ width: '100%', height: 360, paddingBottom: "15px" }}>
                 <ResponsiveContainer>
                   <LineChart data={chartData}>
                     <CartesianGrid strokeDasharray="3 3" opacity={0.18} />
@@ -109,8 +109,8 @@ export function DashboardPage() {
             </Stack>
           </GlassCard>
         </Grid>
-        <Grid item xs={12} xl={5}>
-          <GlassCard sx={{ height: '100%' }}>
+        {/* <Grid item xs={12} xl={5}>
+          <GlassCard sx={{ height: '100%', paddingBottom: "15px" }}>
             <Stack spacing={2}>
               <Typography variant="h6">Operational Highlights</Typography>
               <Box sx={{ width: '100%', height: 360 }}>
@@ -130,7 +130,7 @@ export function DashboardPage() {
               </Box>
             </Stack>
           </GlassCard>
-        </Grid>
+        </Grid> */}
       </Grid>
 
       <Grid container spacing={3} sx={{ mt: 0.5 }}>

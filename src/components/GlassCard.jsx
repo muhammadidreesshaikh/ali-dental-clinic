@@ -23,7 +23,18 @@ export function GlassCard({ children, sx, contentSx, ...props }) {
         ...sx,
       }}
     >
-      <CardContent sx={{ position: 'relative', zIndex: 1, ...contentSx }}>{children}</CardContent>
+      <CardContent
+        sx={{
+          position: 'relative',
+          zIndex: 1,
+          '&:last-child': {
+            paddingBottom: 0,
+          },
+          ...contentSx,
+        }}
+      >
+        {children}
+      </CardContent>
     </Card>
   );
 }

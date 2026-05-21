@@ -45,7 +45,7 @@ export const dashboardStats = [
     gradient: 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)',
   },
   {
-    label: 'Low Stock Medicines',
+    label: 'Low Stock Items',
     value: '34',
     change: '-4.1%',
     icon: Inventory2Rounded,

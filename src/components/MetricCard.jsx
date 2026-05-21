@@ -8,23 +8,23 @@ export function MetricCard({ label, value, change, icon: Icon, gradient, cardSx 
       sx={{
         color: '#fff',
         backgroundImage: `${gradient}, linear-gradient(145deg, rgba(255,255,255,0.8), rgba(255,255,255,0.45))`,
-        minHeight: 160,
+        minHeight: 140,
         ...cardSx,
       }}
       contentSx={{ color: 'inherit' }}
     >
       <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={2}>
         <Box>
-          <Typography variant="body2" sx={{ opacity: 0.88, fontWeight: 700 }}>
+          <Typography variant="body2" sx={{ opacity: 0.88, fontWeight: 500 }}>
             {label}
           </Typography>
-          <Typography variant="h4" sx={{ mt: 1, fontWeight: 800 }}>
+          <Typography variant="h5" sx={{ mt: 1, fontWeight: 800 }}>
             {value}
           </Typography>
           <Chip
             label={change}
             size="small"
-            sx={{ mt: 1.5, bgcolor: 'rgba(255,255,255,0.18)', color: '#fff', fontWeight: 800 }}
+            sx={{ mt: 1.5, bgcolor: 'rgba(255,255,255,0.18)', color: '#fff', fontWeight: 400 }}
           />
         </Box>
         <Box
