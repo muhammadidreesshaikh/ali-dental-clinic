@@ -96,7 +96,7 @@ export const createAppTheme = (mode) =>
       MuiCard: {
         styleOverrides: {
           root: ({ theme }) => ({
-            borderRadius: 5,
+            borderRadius: 24,
             backgroundImage:
               theme.palette.mode === 'dark'
                 ? 'linear-gradient(180deg, rgba(15,23,42,0.92), rgba(8,18,29,0.88))'
@@ -109,9 +109,8 @@ export const createAppTheme = (mode) =>
           root: ({ theme }) => ({
             border: 'none',
             background: 'transparent',
-            borderRadius: 5,
             '& .MuiDataGrid-columnHeaders': {
-              borderRadius: 5,
+              borderRadius: 16,
               background: alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.12 : 0.08),
             },
             '& .MuiDataGrid-cell': {
@@ -121,14 +120,6 @@ export const createAppTheme = (mode) =>
               background: alpha(theme.palette.primary.main, 0.06),
             },
           }),
-        },
-      },
-      MuiTableContainer: {
-        styleOverrides: {
-          root: {
-            borderRadius: 5,
-            overflow: 'hidden',
-          },
         },
       },
     },
