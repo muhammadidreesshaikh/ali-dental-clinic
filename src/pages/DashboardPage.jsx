@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Box, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {
   Bar,
   BarChart,
@@ -56,12 +57,38 @@ export function DashboardPage() {
   const chartData = useMemo(() => dashboardChartData[range], [range]);
   const revenueLineColor = range === 'today' ? '#06b6d4' : range === 'weekly' ? '#10b981' : '#8b5cf6';
 
+  const dashboardTheme = useMemo(() =>
+    createTheme({
+      components: {
+        MuiOutlinedInput: {
+          styleOverrides: {
+            root: {
+              borderRadius: 10,
+            },
+            notchedOutline: {
+              borderRadius: 10,
+            },
+          },
+        },
+        MuiInputBase: {
+          styleOverrides: {
+            root: {
+              borderRadius: 10,
+            },
+          },
+        },
+      },
+    }),
+    []
+  );
+
   if (loading) {
     return <LoadingState rows={3} />;
   }
 
   return (
-    <Box>
+    <ThemeProvider theme={dashboardTheme}>
+      <Box>
       <PageHeader
         title="Dashboard"
         subtitle="Live pharmacy operations overview, trends and high-value actions."
@@ -83,9 +110,9 @@ export function DashboardPage() {
               <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2}>
                 <Box>
                   <Typography variant="h6">Monthly Revenue</Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  {/* <Typography variant="body2" color="text.secondary">
                     Interactive revenue and sales trend with smooth animation.
-                  </Typography>
+                  </Typography> */}
                 </Box>
                 <Tabs value={range} onChange={(_, value) => setRange(value)} sx={{ minHeight: 40 }}>
                   {chartKeys.map((key) => (
@@ -170,6 +197,7 @@ export function DashboardPage() {
           />
         </Grid>
       </Grid>
-    </Box>
+      </Box>
+    </ThemeProvider>
   );
 }

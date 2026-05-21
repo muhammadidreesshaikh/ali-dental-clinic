@@ -21,7 +21,20 @@ export function EmptyState({ title = 'No data yet', description = 'Add your firs
         <Typography color="text.secondary" sx={{ maxWidth: 460 }}>
           {description}
         </Typography>
-        {actionLabel ? <Button variant="contained" onClick={onAction}>{actionLabel}</Button> : null}
+        {actionLabel ? (
+          <Button
+            variant="contained"
+            onClick={onAction}
+            sx={{
+              bgcolor: '#10b981',
+              '&:hover': {
+                bgcolor: '#059669',
+              },
+            }}
+          >
+            {actionLabel}
+          </Button>
+        ) : null}
       </Stack>
     </Box>
   );

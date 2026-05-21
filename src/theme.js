@@ -85,12 +85,30 @@ export const createAppTheme = (mode) =>
         },
       },
       MuiButton: {
+        defaultProps: {
+          color: 'primary',
+        },
         styleOverrides: {
           root: {
             borderRadius: 999,
             paddingInline: 18,
             transition: 'transform 180ms ease, box-shadow 180ms ease, background 180ms ease',
           },
+          containedPrimary: ({ theme }) => ({
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
+            '&:hover': {
+              backgroundColor: theme.palette.primary.dark,
+            },
+          }),
+          outlinedPrimary: ({ theme }) => ({
+            borderColor: theme.palette.primary.main,
+            color: theme.palette.primary.main,
+            '&:hover': {
+              borderColor: theme.palette.primary.dark,
+              backgroundColor: alpha(theme.palette.primary.main, 0.08),
+            },
+          }),
         },
       },
       MuiCard: {

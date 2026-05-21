@@ -87,6 +87,9 @@ export function CrudEntityPage({ config }) {
         addLabel={config.addLabel}
         filterField={config.filterField}
         filterOptions={config.filterOptions}
+        compact
+        cardSx={{ padding: '20px' }}
+        tableSx={{ borderRadius: 10 }}
       />
 
       <FormDialog

@@ -106,8 +106,30 @@ export function FormDialog({ open, title, fields, initialValues, onClose, onSubm
         </Stack>
       </DialogContent>
       <DialogActions sx={{ p: 3, pt: 0 }}>
-        <Button onClick={onClose}>Cancel</Button>
-        <Button variant="contained" onClick={() => onSubmit(values)}>
+        <Button
+          variant="outlined"
+          onClick={onClose}
+          sx={{
+            color: '#1976d2',
+            borderColor: '#1976d2',
+            '&:hover': {
+              borderColor: '#1565c0',
+              backgroundColor: 'rgba(25, 118, 210, 0.08)',
+            },
+          }}
+        >
+          Cancel
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => onSubmit(values)}
+          sx={{
+            bgcolor: '#10b981',
+            '&:hover': {
+              bgcolor: '#059669',
+            },
+          }}
+        >
           Save
         </Button>
       </DialogActions>

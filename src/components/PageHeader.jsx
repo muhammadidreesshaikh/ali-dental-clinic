@@ -25,7 +25,21 @@ export function PageHeader({ title, subtitle, actionLabel, onAction, breadcrumbs
           <Typography variant="h4">{title}</Typography>
           <Typography color="text.secondary">{subtitle}</Typography>
         </Stack>
-        {actionLabel ? <Button variant="contained" size="large" onClick={onAction}>{actionLabel}</Button> : null}
+        {actionLabel ? (
+          <Button
+            variant="contained"
+            size="large"
+            onClick={onAction}
+            sx={{
+              bgcolor: '#10b981',
+              '&:hover': {
+                bgcolor: '#059669',
+              },
+            }}
+          >
+            {actionLabel}
+          </Button>
+        ) : null}
       </Stack>
     </Stack>
   );

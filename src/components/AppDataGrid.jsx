@@ -55,9 +55,9 @@ export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDele
         <Stack direction={{ xs: 'column', lg: 'row' }} justifyContent="space-between" spacing={2}>
           <Box>
             <Typography variant="h6">{title}</Typography>
-            <Typography variant="body2" color="text.secondary">
+            {/* <Typography variant="body2" color="text.secondary">
               Search, filter, sort and export records from a polished MUI DataGrid.
-            </Typography>
+            </Typography> */}
           </Box>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} alignItems={{ xs: 'stretch', sm: 'center' }}>
             <TextField
@@ -78,15 +78,15 @@ export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDele
                 ))}
               </TextField>
             ) : null}
-            <Button variant="contained" onClick={onAdd}>
+            {/* <Button variant="contained" onClick={onAdd}>
               {addLabel}
-            </Button>
+            </Button> */}
             <Button variant="outlined" onClick={() => printTableAsPdf(title, exportableRows)} startIcon={<PictureAsPdfRounded />}>
               PDF
             </Button>
-            <Button variant="outlined" onClick={() => downloadCsv(exportableRows, title)}>
+            {/* <Button variant="outlined" onClick={() => downloadCsv(exportableRows, title)}>
               Excel
-            </Button>
+            </Button> */}
             {extraActions}
           </Stack>
         </Stack>
@@ -101,7 +101,8 @@ export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDele
               noRowsOverlay: () => <EmptyState title="No records found" description="Try another search or add a new record." actionLabel={onAdd ? addLabel : undefined} onAction={onAdd} />,
             }}
             sx={{
-              border: 'none',
+              border: '1px solid',
+              borderColor: 'divider',
               borderRadius: 3,
               '& .MuiDataGrid-virtualScroller': {
                 borderBottom: 'none',
