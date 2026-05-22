@@ -43,7 +43,7 @@ const defaultColumns = (onEdit, onDelete) => [
   },
 ];
 
-export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDelete, onAdd, addLabel = 'Add', extraActions = [], filterField, filterOptions = [], height = 520, compact = false, cardSx, tableSx }) {
+export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDelete, onAdd, addLabel = 'Add', extraActions = [], filterField, filterOptions = [], height = 520, compact = false, cardSx, tableSx, searchInputSx }) {
   const [search, setSearch] = useState('');
   const [filter, setFilter] = useState('All');
 
@@ -81,6 +81,7 @@ export function AppDataGrid({ title, rows, columns, searchFields, onEdit, onDele
               placeholder="Search..."
               value={search}
               onChange={(event) => setSearch(event.target.value)}
+              sx={searchInputSx}
               InputProps={{
                 startAdornment: <SearchRounded sx={{ mr: 1, color: 'text.secondary' }} />,
               }}

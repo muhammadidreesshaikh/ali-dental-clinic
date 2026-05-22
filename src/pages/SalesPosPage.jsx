@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { Box, Button, Chip, Divider, Grid, IconButton, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import { AddRounded, DeleteOutlineRounded, RemoveRounded, PrintRounded, ReceiptLongRounded } from '@mui/icons-material';
+import { AppDataGrid } from '../components/AppDataGrid';
 import { salesMedicines } from '../data/appData';
 import { GlassCard } from '../components/GlassCard';
 import { PageHeader } from '../components/PageHeader';
 import { useSnackbar } from '../context/SnackbarContext';
 
 const paymentMethods = ['Cash', 'Card', 'Online'];
-
-export function SalesPosPage() {
+export const SalesPosPage = () => {
   const [search, setSearch] = useState('');
   const [cart, setCart] = useState([]);
   const [discount, setDiscount] = useState(0);
@@ -45,57 +45,41 @@ export function SalesPosPage() {
 
       <Grid container spacing={3}>
         <Grid item xs={12} lg={8}>
-          <GlassCard disableLastChildPadding>
-            <Stack spacing={2.5}>
-              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between">
-                <TextField
-                  fullWidth
-                  label="Search medicines"
-                  value={search}
-                  onChange={(event) => setSearch(event.target.value)}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      borderRadius: '10px',
-                    },
-                  }}
-                />
-                {/* <Chip label="Barcode Ready" color="secondary" sx={{ alignSelf: 'center' }} /> */}
-              </Stack>
-              <Box
-                sx={{
-                  maxHeight: catalog.length > 6 ? 720 : 'none',
-                  overflowY: catalog.length > 6 ? 'auto' : 'visible',
-                  pr: catalog.length > 6 ? 1 : 0,
-                }}
-              >
-                <Grid container spacing={2} alignItems="stretch" justifyContent="center" sx={{ alignContent: 'flex-start' }}>
-                  {catalog.map((medicine) => (
-                    <Grid item xs={12} sm={6} xl={4} key={medicine.id} sx={{ display: 'flex' }}>
-                      <GlassCard sx={{ height: '145px', width: '100%' }} disableLastChildPadding>
-                        <Stack spacing={1.25}>
-                          <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
-                            {medicine.name}
-                          </Typography>
-                          <Stack direction="row" spacing={1} flexWrap="wrap">
-                            <Chip label={medicine.category} size="small" />
-                            <Chip label={`Stock ${medicine.stock}`} size="small" color="success" variant="outlined" />
-                          </Stack>
-                          <Stack direction="row" justifyContent="space-between" alignItems="center">
-                            <Typography variant="h6" sx={{ fontWeight: 900 }}>
-                              Rs. {medicine.price}
-                            </Typography>
-                            <Button variant="contained" onClick={() => addToCart(medicine)} startIcon={<AddRounded />}>
-                              Add
-                            </Button>
-                          </Stack>
-                        </Stack>
-                      </GlassCard>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Box>
-            </Stack>
-          </GlassCard>
+          <AppDataGrid
+            // title="Medicines"
+            rows={catalog}
+            columns={[
+              { field: 'name', headerName: 'Medicine', flex: 1, minWidth: 180 },
+              { field: 'category', headerName: 'Category', width: 150 },
+              { field: 'stock', headerName: 'Stock', width: 110 },
+              { field: 'price', headerName: 'Price', width: 120, valueFormatter: ({ value }) => `Rs. ${value}` },
+              {
+                field: 'actions',
+                headerName: 'Add',
+                width: 100,
+                sortable: false,
+                filterable: false,
+                align: 'center',
+                headerAlign: 'center',
+                renderCell: (params) => (
+                  <IconButton
+                    size="small"
+                    color="primary"
+                    onClick={() => addToCart(params.row)}
+                    aria-label={`add ${params.row.name}`}
+                    sx={{ borderRadius: '50%', border: '1px solid', borderColor: 'primary.main', bgcolor: 'background.paper' }}
+                  >
+                    <AddRounded fontSize="small" />
+                  </IconButton>
+                ),
+              },
+            ]}
+            searchFields={['name', 'category']}
+            searchInputSx={{ '& .MuiOutlinedInput-root': { borderRadius: '10px' } }}
+            compact
+            cardSx={{ padding: '20px' }}
+            tableSx={{ borderRadius: 3 }}
+          />
         </Grid>
 
         <Grid item xs={12} lg={4}>
