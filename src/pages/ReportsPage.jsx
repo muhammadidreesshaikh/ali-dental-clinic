@@ -35,7 +35,7 @@ export function ReportsPage() {
 
       <Grid container spacing={3}>
         <Grid item xs={12} xl={8}>
-          <GlassCard>
+          <GlassCard disableLastChildPadding>
             <Stack spacing={2}>
               <Typography variant="h6">Revenue Analytics</Typography>
               <Box sx={{ width: '100%', height: 360 }}>
@@ -53,8 +53,8 @@ export function ReportsPage() {
             </Stack>
           </GlassCard>
         </Grid>
-        <Grid item xs={12} xl={4}>
-          <GlassCard>
+        <Grid item xs={6} xl={4}>
+          <GlassCard disableLastChildPadding>
             <Stack spacing={2}>
               <Typography variant="h6">Exports</Typography>
               <Button variant="contained" fullWidth>Download PDF</Button>

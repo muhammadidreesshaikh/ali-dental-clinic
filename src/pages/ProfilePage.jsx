@@ -21,8 +21,8 @@ export function ProfilePage() {
       />
 
       <Grid container spacing={3}>
-        <Grid item xs={12} xl={4}>
-          <GlassCard>
+        <Grid item xs={6} xl={4}>
+          <GlassCard disableLastChildPadding>
             <Stack spacing={2} alignItems="center">
               <Avatar sx={{ width: 92, height: 92, fontSize: 32, bgcolor: 'secondary.main' }}>{user?.avatar}</Avatar>
               <Chip label={user?.role || 'Admin'} color="success" />
@@ -36,28 +36,34 @@ export function ProfilePage() {
           </GlassCard>
         </Grid>
         <Grid item xs={12} xl={8}>
-          <GlassCard>
-            <Stack spacing={2.5}>
+          <GlassCard disableLastChildPadding>
+            <Stack>
               <Typography variant="h6">Personal Info</Typography>
-              <Grid container spacing={2}>
-                <Grid item xs={12} md={6}><TextField fullWidth label="Full Name" value={name} onChange={(event) => setName(event.target.value)} /></Grid>
-                <Grid item xs={12} md={6}><TextField fullWidth label="Title" value={title} onChange={(event) => setTitle(event.target.value)} /></Grid>
+              <Grid container spacing={2} alignItems="center" mt={2}>
+                <Grid item xs={12} md={6}>
+                  <TextField fullWidth label="Full Name" value={name} onChange={(event) => setName(event.target.value)} />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <TextField fullWidth label="Title" value={title} onChange={(event) => setTitle(event.target.value)} />
+                </Grid>
+                <Grid item xs={12} md={12} sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' } }}>
+                  <Button
+                    variant="contained"
+                    sx={{ width: { xs: '100%', md: 'auto' } }}
+                    onClick={() => {
+                      updateProfile({ name, title });
+                      notify('Profile updated successfully.', 'success');
+                    }}
+                  >
+                    Save Changes
+                  </Button>
+                </Grid>
               </Grid>
-              <Button
-                variant="contained"
-                sx={{ alignSelf: 'flex-start' }}
-                onClick={() => {
-                  updateProfile({ name, title });
-                  notify('Profile updated successfully.', 'success');
-                }}
-              >
-                Save Changes
-              </Button>
             </Stack>
           </GlassCard>
         </Grid>
         <Grid item xs={12}>
-          <GlassCard>
+          <GlassCard disableLastChildPadding>
             <Typography variant="h6" sx={{ mb: 2 }}>Activity Timeline</Typography>
             <List>
               {profileTimeline.map((event) => (

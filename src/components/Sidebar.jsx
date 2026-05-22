@@ -61,7 +61,7 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
           );
         })}
       </List>
-      {!collapsed ? (
+      {/* {!collapsed ? (
         <Box sx={{ px: 2.5, pb: 1 }}>
           <Box sx={{ p: 2, borderRadius: 4, background: 'linear-gradient(135deg, rgba(139,92,246,0.16), rgba(16,185,129,0.14))' }}>
             <Typography variant="subtitle2" sx={{ fontWeight: 800 }}>
@@ -72,7 +72,7 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
             </Typography>
           </Box>
         </Box>
-      ) : null}
+      ) : null} */}
     </Box>
   );
 

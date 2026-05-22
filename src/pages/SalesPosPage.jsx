@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Box, Button, Chip, Divider, Grid, IconButton, MenuItem, Stack, TextField, Typography } from '@mui/material';
-import { AddRounded, DeleteOutlineRounded, RemoveRounded, PrintRounded, ReceiptLongRounded, Height } from '@mui/icons-material';
+import { AddRounded, DeleteOutlineRounded, RemoveRounded, PrintRounded, ReceiptLongRounded } from '@mui/icons-material';
 import { salesMedicines } from '../data/appData';
 import { GlassCard } from '../components/GlassCard';
 import { PageHeader } from '../components/PageHeader';
@@ -45,7 +45,7 @@ export function SalesPosPage() {
 
       <Grid container spacing={3}>
         <Grid item xs={12} lg={8}>
-          <GlassCard>
+          <GlassCard disableLastChildPadding>
             <Stack spacing={2.5}>
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="space-between">
                 <TextField
@@ -61,38 +61,46 @@ export function SalesPosPage() {
                 />
                 {/* <Chip label="Barcode Ready" color="secondary" sx={{ alignSelf: 'center' }} /> */}
               </Stack>
-              <Grid container spacing={2} alignItems="stretch">
-                {catalog.map((medicine) => (
-                  <Grid item xs={12} sm={6} xl={4} key={medicine.id} sx={{ display: 'flex' }}>
-                    <GlassCard sx={{ height: '100%', width: '100%' }}>
-                      <Stack spacing={1.25} sx={{ height: '335px' }}>
-                        <Box component="img" src={medicine.image || ''} alt={medicine.name} sx={{ width: '100%', height: 200, borderRadius: 3, objectFit: 'cover', display: 'block' }} />
-                        <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
-                          {medicine.name}
-                        </Typography>
-                        <Stack direction="row" spacing={1} flexWrap="wrap">
-                          <Chip label={medicine.category} size="small" />
-                          <Chip label={`Stock ${medicine.stock}`} size="small" color="success" variant="outlined" />
-                        </Stack>
-                        <Stack direction="row" justifyContent="space-between" alignItems="center">
-                          <Typography variant="h6" sx={{ fontWeight: 900 }}>
-                            Rs. {medicine.price}
+              <Box
+                sx={{
+                  maxHeight: catalog.length > 6 ? 720 : 'none',
+                  overflowY: catalog.length > 6 ? 'auto' : 'visible',
+                  pr: catalog.length > 6 ? 1 : 0,
+                }}
+              >
+                <Grid container spacing={2} alignItems="stretch" justifyContent="center" sx={{ alignContent: 'flex-start' }}>
+                  {catalog.map((medicine) => (
+                    <Grid item xs={12} sm={6} xl={4} key={medicine.id} sx={{ display: 'flex' }}>
+                      <GlassCard sx={{ height: '100%', width: '100%' }} disableLastChildPadding>
+                        <Stack spacing={1.25} sx={{ height: '310px' }}>
+                          <Box component="img" src={medicine.image || ''} alt={medicine.name} sx={{ width: '100%', height: 200, borderRadius: 3, objectFit: 'cover', display: 'block' }} />
+                          <Typography variant="subtitle1" sx={{ fontWeight: 800 }}>
+                            {medicine.name}
                           </Typography>
-                          <Button variant="contained" onClick={() => addToCart(medicine)} startIcon={<AddRounded />}>
-                            Add
-                          </Button>
+                          <Stack direction="row" spacing={1} flexWrap="wrap">
+                            <Chip label={medicine.category} size="small" />
+                            <Chip label={`Stock ${medicine.stock}`} size="small" color="success" variant="outlined" />
+                          </Stack>
+                          <Stack direction="row" justifyContent="space-between" alignItems="center">
+                            <Typography variant="h6" sx={{ fontWeight: 900 }}>
+                              Rs. {medicine.price}
+                            </Typography>
+                            <Button variant="contained" onClick={() => addToCart(medicine)} startIcon={<AddRounded />}>
+                              Add
+                            </Button>
+                          </Stack>
                         </Stack>
-                      </Stack>
-                    </GlassCard>
-                  </Grid>
-                ))}
-              </Grid>
+                      </GlassCard>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
             </Stack>
           </GlassCard>
         </Grid>
 
         <Grid item xs={12} lg={4}>
-          <GlassCard sx={{ position: 'sticky', top: 100 }}>
+          <GlassCard sx={{ position: 'sticky', top: 100 }} disableLastChildPadding>
             <Stack spacing={2.5}>
               <Stack direction="row" alignItems="center" spacing={1.5}>
                 <ReceiptLongRounded color="primary" />

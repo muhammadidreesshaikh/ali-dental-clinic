@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@mui/material';
 
-export function GlassCard({ children, sx, contentSx, ...props }) {
+export function GlassCard({ children, sx, contentSx, disableLastChildPadding = false, ...props }) {
   return (
     <Card
       {...props}
@@ -27,9 +27,7 @@ export function GlassCard({ children, sx, contentSx, ...props }) {
         sx={{
           position: 'relative',
           zIndex: 1,
-          '&:last-child': {
-            paddingBottom: 0,
-          },
+          ...(disableLastChildPadding ? {} : { '&:last-child': { paddingBottom: 0 } }),
           ...contentSx,
         }}
       >

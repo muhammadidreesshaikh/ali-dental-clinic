@@ -20,7 +20,7 @@ export function SettingsPage() {
 
       <Grid container spacing={3}>
         <Grid item xs={12} xl={4}>
-          <GlassCard>
+          <GlassCard disableLastChildPadding>
             <Stack spacing={2}>
               <Typography variant="h6">System Preferences</Typography>
               <FormControlLabel control={<Switch checked={mode === 'dark'} onChange={toggleMode} />} label="Dark Mode" />
@@ -33,7 +33,7 @@ export function SettingsPage() {
           <RoleGate
             allowedRoles={['Super Admin']}
             fallback={
-              <GlassCard sx={{ minHeight: '100%' }}>
+              <GlassCard disableLastChildPadding sx={{ minHeight: '100%' }}>
                 <Stack spacing={1.5}>
                   <Typography variant="h6">Security Settings</Typography>
                   <Typography color="text.secondary">
@@ -43,7 +43,7 @@ export function SettingsPage() {
               </GlassCard>
             }
           >
-            <GlassCard sx={{ minHeight: '100%' }}>
+            <GlassCard disableLastChildPadding sx={{ minHeight: '100%' }}>
               <Stack spacing={2}>
                 <Typography variant="h6">Security Settings</Typography>
                 <FormControlLabel control={<Switch defaultChecked />} label="Require OTP for sensitive actions" />
@@ -54,7 +54,7 @@ export function SettingsPage() {
           </RoleGate>
         </Grid>
         <Grid item xs={12} xl={8}>
-          <GlassCard>
+          <GlassCard disableLastChildPadding>
             <Stack spacing={1.5}>
               <Typography variant="h6">Settings Modules</Typography>
               <Divider />
