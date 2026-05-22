@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
-import { Box, Button, MenuItem, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, IconButton, MenuItem, Stack, TextField, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { DeleteOutlineRounded, PictureAsPdfRounded, SearchRounded } from '@mui/icons-material';
+import { DeleteOutlineRounded, EditRounded, PictureAsPdfRounded, SearchRounded } from '@mui/icons-material';
 import { GlassCard } from './GlassCard';
 import { EmptyState } from './EmptyState';
 import { downloadCsv, printTableAsPdf } from '../utils/export';
@@ -11,17 +11,33 @@ const defaultColumns = (onEdit, onDelete) => [
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 140,
+    width: 110,
+    align: 'center',
+    headerAlign: 'center',
     sortable: false,
     filterable: false,
     renderCell: (params) => (
-      <Stack direction="row" spacing={1}>
-        <Button size="small" variant="outlined" onClick={() => onEdit?.(params.row)} disabled={!onEdit}>
-          Edit
-        </Button>
-        <Button size="small" color="error" variant="outlined" onClick={() => onDelete?.(params.row)} disabled={!onDelete}>
+      <Stack direction="row" spacing={1.5} justifyContent="center" alignItems="center" sx={{ width: '100%', marginTop: "8px" }}>
+        <IconButton
+          size="small"
+          color="primary"
+          onClick={() => onEdit?.(params.row)}
+          disabled={!onEdit}
+          aria-label="edit row"
+          sx={{ borderRadius: '50%', border: '1px solid', borderColor: 'primary.main'}}
+        >
+          <EditRounded fontSize="small" />
+        </IconButton>
+        <IconButton
+          size="small"
+          color="error"
+          onClick={() => onDelete?.(params.row)}
+          disabled={!onDelete}
+          aria-label="delete row"
+          sx={{ borderRadius: '50%', border: '1px solid', borderColor: 'error.main' }}
+        >
           <DeleteOutlineRounded fontSize="small" />
-        </Button>
+        </IconButton>
       </Stack>
     ),
   },

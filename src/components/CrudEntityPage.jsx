@@ -67,8 +67,8 @@ export function CrudEntityPage({ config }) {
 
       <Grid container spacing={3} sx={{ mb: 3 }}>
         {stats.map((item) => (
-          <Grid item xs={12} sm={6} xl={3} key={item.label}>
-            <MetricCard label={item.label} value={item.value} change="Managed live" icon={() => null} gradient="linear-gradient(135deg, #10b981 0%, #06b6d4 100%)" />
+          <Grid item xs={12} sm={3} xl={3} key={item.label}>
+            <MetricCard label={item.label} value={item.value} change="Managed live" icon={item.icon} gradient="linear-gradient(135deg, #10b981 0%, #06b6d4 100%)" />
           </Grid>
         ))}
       </Grid>
@@ -89,7 +89,7 @@ export function CrudEntityPage({ config }) {
         filterOptions={config.filterOptions}
         compact
         cardSx={{ padding: '20px' }}
-        tableSx={{ borderRadius: 10 }}
+        tableSx={{ borderRadius: 3 }}
       />
 
       <FormDialog
