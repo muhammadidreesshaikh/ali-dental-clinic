@@ -17,7 +17,7 @@ export function AppShell() {
         collapsed={collapsed}
       />
       <Box sx={{ flex: 1, minWidth: 0, width: '100%' }}>
-        <Topbar onMenuClick={() => setMobileOpen(true)} collapsed={collapsed} onToggleCollapse={() => setCollapsed((value) => !value)} />
+        <Topbar onMenuClick={() => setMobileOpen((value) => !value)} collapsed={collapsed} onToggleCollapse={() => setCollapsed((value) => !value)} />
         <Box
           component="main"
           sx={{

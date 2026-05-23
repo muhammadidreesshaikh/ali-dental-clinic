@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Divider, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography } from '@mui/material';
+import { Box, Divider, Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Stack, Typography } from '@mui/material';
+import { CloseRounded } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { navigationItems } from '../data/appData';
 
@@ -12,6 +13,11 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
 
   const content = (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', py: 2 }}>
+      {/* <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end', px: 1, pb: 1 }}>
+        <IconButton onClick={onMobileClose} aria-label="Close sidebar">
+          <CloseRounded />
+        </IconButton>
+      </Box> */}
       <Stack spacing={1.5} sx={{ px: collapsed ? 1.5 : 2.5, pb: 2 }}>
         <Box
           sx={{
@@ -83,7 +89,15 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
         open={mobileOpen}
         onClose={onMobileClose}
         ModalProps={{ keepMounted: true }}
-        sx={{ display: { xs: 'block', md: 'none' }, '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box' } }}
+        sx={{
+          display: { xs: 'block', md: 'none' },
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+            top: { xs: 64, sm: 72 },
+            height: { xs: 'calc(100% - 64px)', sm: 'calc(100% - 72px)' },
+          },
+        }}
       >
         {content}
       </Drawer>
