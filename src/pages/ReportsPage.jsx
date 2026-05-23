@@ -19,7 +19,7 @@ export function ReportsPage() {
 
       <Grid container spacing={3} sx={{ mb: 3 }}>
         {reportRows.map((report) => (
-          <Grid item xs={12} md={4} key={report.id}>
+          <Grid item xs={12} sm={6} md={4} key={report.id}>
             <GlassCard>
               <Stack spacing={1}>
                 <Typography color="text.secondary">{report.title}</Typography>
@@ -53,7 +53,7 @@ export function ReportsPage() {
             </Stack>
           </GlassCard>
         </Grid>
-        <Grid item xs={6} xl={4}>
+        <Grid item xs={12} md={4}>
           <GlassCard disableLastChildPadding>
             <Stack spacing={2}>
               <Typography variant="h6">Exports</Typography>

@@ -52,19 +52,19 @@ export function Topbar({ onMenuClick, collapsed, onToggleCollapse }) {
         borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
       }}
     >
-      <Toolbar sx={{ minHeight: 80, gap: 2 }}>
-        <Stack direction="row" alignItems="center" spacing={1.5} sx={{ flex: 1 }}>
+      <Toolbar sx={{ minHeight: { xs: 64, sm: 72, md: 80 }, gap: { xs: 1, md: 2 }, px: { xs: 1.5, sm: 2, md: 3 } }}>
+        <Stack direction="row" alignItems="center" spacing={1.5} sx={{ flex: 1, minWidth: 0 }}>
           <IconButton onClick={onMenuClick} sx={{ display: { md: 'none' } }}>
             <MenuRounded />
           </IconButton>
           <Box
             sx={{
+              display: { xs: 'none', sm: 'grid' },
               width: 46,
               height: 46,
               borderRadius: 3,
               bgcolor: 'primary.main',
               color: 'common.white',
-              display: 'grid',
               placeItems: 'center',
               boxShadow: 3,
             }}
@@ -73,11 +73,16 @@ export function Topbar({ onMenuClick, collapsed, onToggleCollapse }) {
               D
             </Typography>
           </Box>
-          <Box>
-            <Typography variant="h6" color="text.primary" sx={{ fontWeight: 900, lineHeight: 1, marginBottom: "3px"}}>
+          <Box sx={{ minWidth: 0 }}>
+            <Typography
+              variant="h6"
+              color="text.primary"
+              sx={{ fontWeight: 900, lineHeight: 1, mb: 0.25, fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' } }}
+              noWrap
+            >
               Daniyal Pharmacy
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'none', sm: 'block' } }} noWrap>
               Modern pharmacy management suite
             </Typography>
           </Box>
@@ -102,14 +107,14 @@ export function Topbar({ onMenuClick, collapsed, onToggleCollapse }) {
         </Tooltip>
         <Button
           onClick={(event) => setAnchorEl(event.currentTarget)}
-          sx={{ textTransform: 'none', borderRadius: 999, px: 1.5 }}
+          sx={{ textTransform: 'none', borderRadius: 999, px: { xs: 0.75, sm: 1.5 }, minWidth: 0 }}
           startIcon={
             <Badge overlap="circular" variant="dot" color="success" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
               <Avatar sx={{ width: 36, height: 36, bgcolor: 'secondary.main' }}>{user?.avatar || 'DP'}</Avatar>
             </Badge>
           }
         >
-          <Stack spacing={0} alignItems="flex-start">
+          <Stack spacing={0} alignItems="flex-start" sx={{ display: { xs: 'none', sm: 'flex' } }}>
             <Typography variant="body2" sx={{ fontWeight: 800, lineHeight: 1.1 }}>
               {user?.name || 'Daniyal User'}
             </Typography>

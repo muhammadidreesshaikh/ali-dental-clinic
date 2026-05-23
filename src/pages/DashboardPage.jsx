@@ -20,7 +20,6 @@ import { GlassCard } from '../components/GlassCard';
 import { PageHeader } from '../components/PageHeader';
 import { LoadingState } from '../components/LoadingState';
 import { AppDataGrid } from '../components/AppDataGrid';
-import { Padding } from '@mui/icons-material';
 
 const chartKeys = ['today', 'weekly', 'monthly'];
 
@@ -97,14 +96,14 @@ export function DashboardPage() {
 
       <Grid container spacing={3} sx={{ mb: 3 }}>
         {dashboardStats.map((stat) => (
-          <Grid key={stat.label} item xs={12} sm={3} xl={3}>
+          <Grid key={stat.label} item xs={12} sm={6} lg={3}>
             <MetricCard {...stat}  />
           </Grid>
         ))}
       </Grid>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} xl={7}>
+        <Grid item xs={12} lg={7}>
           <GlassCard >
             <Stack spacing={2.5}>
               <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2}>
@@ -161,7 +160,7 @@ export function DashboardPage() {
       </Grid>
 
       <Grid container spacing={3} sx={{ mt: 0.5 }}>
-        <Grid item xs={12} xl={6}>
+        <Grid item xs={12} lg={6}>
           <AppDataGrid
             title="Recent Sales"
             rows={recentSalesRows}
@@ -178,7 +177,7 @@ export function DashboardPage() {
             cardSx={{ padding: "20px",}}
           />
         </Grid>
-        <Grid item xs={12} xl={6}>
+        <Grid item xs={12} lg={6}>
           <AppDataGrid
             title="Top Selling Medicines"
             rows={topSellingRows}

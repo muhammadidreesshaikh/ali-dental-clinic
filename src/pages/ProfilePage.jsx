@@ -21,7 +21,7 @@ export function ProfilePage() {
       />
 
       <Grid container spacing={3}>
-        <Grid item xs={6} xl={4}>
+        <Grid item xs={12} md={4}>
           <GlassCard disableLastChildPadding>
             <Stack spacing={2} alignItems="center">
               <Avatar sx={{ width: 92, height: 92, fontSize: 32, bgcolor: 'secondary.main' }}>{user?.avatar}</Avatar>
@@ -35,7 +35,7 @@ export function ProfilePage() {
             </Stack>
           </GlassCard>
         </Grid>
-        <Grid item xs={12} xl={8}>
+        <Grid item xs={12} md={8}>
           <GlassCard disableLastChildPadding>
             <Stack>
               <Typography variant="h6">Personal Info</Typography>

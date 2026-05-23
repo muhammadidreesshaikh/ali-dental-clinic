@@ -6,7 +6,7 @@ export function LoadingState({ rows = 4 }) {
     <Stack spacing={3}>
       <Grid container spacing={3}>
         {Array.from({ length: 4 }).map((_, index) => (
-          <Grid item xs={12} sm={6} xl={3} key={index}>
+          <Grid item xs={12} sm={6} lg={3} key={index}>
             <Skeleton variant="rounded" height={150} />
           </Grid>
         ))}
