@@ -90,13 +90,13 @@ export function Topbar({ onMenuClick, collapsed, onToggleCollapse }) {
         </Stack>
 
         <Tooltip title={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
-          <IconButton onClick={toggleMode}>
-            {mode === 'dark' ? <Brightness7Rounded /> : <Brightness4Rounded />}
-          </IconButton>
-        </Tooltip>
-        <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
+          <Tooltip title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}>
           <IconButton sx={{ display: { xs: 'none', md: 'inline-flex' } }} onClick={onToggleCollapse}>
             {collapsed ? <ChevronRightRounded /> : <ChevronLeftRounded />}
+          </IconButton>
+        </Tooltip>
+          <IconButton onClick={toggleMode}>
+            {mode === 'dark' ? <Brightness7Rounded /> : <Brightness4Rounded />}
           </IconButton>
         </Tooltip>
         <Tooltip title="Notifications">

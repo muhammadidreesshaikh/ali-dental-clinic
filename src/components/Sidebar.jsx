@@ -21,13 +21,14 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
       <Stack spacing={1.5} sx={{ px: collapsed ? 1.5 : 2.5, pb: 2 }}>
         <Box
           sx={{
-            p: 1.5,
+            p: 1,
             borderRadius: 4,
             background: 'linear-gradient(135deg, rgba(16,185,129,0.18), rgba(6,182,212,0.18))',
+            textAlign: collapsed ? 'center' : 'left',
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: 800, letterSpacing: '0.12em'}}>
-            DANIYAL
+          <Typography variant="h5" sx={{ fontWeight: 900, letterSpacing: collapsed ? 0 : '0.12em' }}>
+            {collapsed ? 'D' : 'DANIYAL'}
           </Typography>
           {!collapsed ? <Typography color="text.secondary" sx={{fontSize: "14px"}}>Pharmacy Management</Typography> : null}
         </Box>
@@ -51,9 +52,12 @@ export function Sidebar({ mobileOpen, onMobileClose, collapsed, onCollapseToggle
               selected={active}
               sx={{
                 my: 0.5,
+                mx: 0.75,
+                width: 'calc(100% - 12px)',
                 borderRadius: 3,
                 minHeight: 52,
                 justifyContent: collapsed ? 'center' : 'flex-start',
+                boxSizing: 'border-box',
                 '&.Mui-selected': {
                   background: 'linear-gradient(135deg, rgba(16,185,129,0.16), rgba(6,182,212,0.14))',
                 },
