@@ -100,6 +100,7 @@ export function CrudEntityPage({ config }) {
         onClose={() => setOpen(false)}
         onSubmit={handleSubmit}
         centered={config.formCentered ?? true}
+        lastFieldLeftAligned={config.lastFieldLeftAligned ?? false}
       />
     </Box>
   );

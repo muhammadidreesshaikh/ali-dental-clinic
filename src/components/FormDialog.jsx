@@ -25,7 +25,7 @@ const toFormValue = (value) => {
   return value;
 };
 
-export function FormDialog({ open, title, fields, initialValues, onClose, onSubmit, centered = true }) {
+export function FormDialog({ open, title, fields, initialValues, onClose, onSubmit, centered = true, lastFieldLeftAligned = false }) {
   const [values, setValues] = useState(initialValues || {});
   const [preview, setPreview] = useState(initialValues?.image || '');
 
@@ -63,11 +63,18 @@ export function FormDialog({ open, title, fields, initialValues, onClose, onSubm
             </Box>
           ) : null}
           <Grid container spacing={2} justifyContent={centered ? 'center' : 'flex-start'} sx={{ width: '100%', mx: centered ? 'auto' : 0, maxWidth: 700 }}>
-            {fields.map((field) => {
+            {fields.map((field, index) => {
+              const isLastField = index === fields.length - 1;
               const smSize = field.type === 'textarea' ? 12 : 6;
 
               return (
-                <Grid item xs={12} sm={smSize} key={field.name}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={smSize}
+                  key={field.name}
+                  sx={isLastField && lastFieldLeftAligned ? { mr: { sm: 'auto' } } : undefined}
+                >
                   {field.type === 'select' ? (
                     <TextField
                       select

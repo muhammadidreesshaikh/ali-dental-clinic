@@ -267,6 +267,7 @@ export const purchasesConfig = {
     { name: 'status', label: 'Status', type: 'select', options: ['Approved', 'Pending', 'Received'] },
     { name: 'date', label: 'Date', type: 'date' },
   ],
+  lastFieldLeftAligned: true,
   statusAccessor: (row) => row.status,
 };
 
@@ -295,6 +296,7 @@ export const supplierConfig = {
     { name: 'email', label: 'Email' },
     { name: 'address', label: 'Address' },
   ],
+  lastFieldLeftAligned: true,
 };
 
 export const customerConfig = {
